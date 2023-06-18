@@ -165,6 +165,40 @@ DROP TABLE clientes_exer04;
 SELECT * FROM clientes_exer04;
 
 
+##05
+CREATE TABLE clientes_exer05(
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(100),
+email VARCHAR(100),
+data_cadastro DATE
+);
+
+CREATE TABLE pedidos_exer05(
+id INT PRIMARY KEY AUTO_INCREMENT,
+cliente_id INT,
+data_pedido DATE,
+valor_total DECIMAL(10,2),
+status_pedido VARCHAR(50),
+FOREIGN KEY (cliente_id) REFERENCES clientes_exer05(id)
+);
+
+ALTER TABLE pedidos_exer05
+ADD quantidade INT; 
+
+ALTER TABLE pedidos_exer05
+MODIFY COLUMN valor_total DECIMAL(10,2) SIGNED;
+
+DROP TABLE pedidos_exer05;
+
+ALTER TABLE  clientes_exer05
+DROP COLUMN email;
+
+SELECT * FROM   clientes_exer05 ;
+
+##06
+
+
+
 
 
 

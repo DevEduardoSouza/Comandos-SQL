@@ -136,6 +136,34 @@ CREATE TABLE pedidos_exer03(
 SELECT * FROM pedidos_exer03;
 
 ##04
+CREATE TABLE livros_exer04(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(100) NOT NULL,
+    autor VARCHAR(100) NOT NULL,
+    ano_publicacao INT NOT NULL,
+    disponivel BOOLEAN
+);
+
+CREATE TABLE clientes_exer04(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    telefone VARCHAR(100) ,
+    livro_id INT,
+    FOREIGN KEY (livro_id) REFERENCES livros_exer04(id)
+);
+
+
+ALTER TABLE livros_exer04
+ADD data_emprestimo DATE;
+
+ALTER TABLE clientes_exer04 
+DROP COLUMN telefone;
+
+DROP TABLE clientes_exer04;
+
+SELECT * FROM clientes_exer04;
+
 
 
 

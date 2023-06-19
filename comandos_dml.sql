@@ -91,7 +91,20 @@ WHERE rating = 'PG';
 #Exclua todos os registros da tabela "rental" que tenham uma data de retorno anterior a 2022-01-01.
 #Atualize o "email" do cliente com "customer_id" igual a 10 para "novomail@example.com".
 #Exclua todos os registros da tabela "inventory" que estejam associados a filmes que não estejam mais disponíveis na tabela "film".
+SELECT * FROM film;
+UPDATE film
+SET  length = 120
+WHERE rating = 'R';
 
+SELECT * FROM payment;
+DELETE FROM payment
+WHERE amount < 1;
+
+SELECT * FROM customer;
+
+UPDATE customer
+SET email = 'novomail@example.com'
+WHERE customer_id = 10;
 
 #EXER 03
 #Atualize o "rating" dos filmes da tabela "film" para "G" onde o "length" seja menor ou igual a 60 minutos.
@@ -100,7 +113,12 @@ WHERE rating = 'PG';
 #Exclua todos os registros da tabela "rental" que tenham uma data de aluguel anterior a 2022-01-01 e não tenham sido devolvidos até o momento.
 #Atualize o "email" do cliente com "customer_id" igual a 15 para "novoemail@example.com".
 #Exclua todos os registros da tabela "inventory" que estejam associados a filmes cuja categoria seja "Horror".
+SELECT * FROM film;
+UPDATE film
+SET rating = "G"
+WHERE length <= 60;
 
+SELECT * FROM payment;
 
 #EXER 04
 #Atualize o "rating" dos filmes da tabela "film" para "G" onde o "length" seja menor ou igual a 60 minutos.

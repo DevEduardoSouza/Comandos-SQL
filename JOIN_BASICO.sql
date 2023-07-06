@@ -33,7 +33,7 @@ WHERE a.last_name = 'WEST';
 
 
 
--- qiuantidade de cidades por pais
+-- Quantidade de cidades por pais
 
 SELECT COUNT(city), country.country AS QUANTIDADE
 FROM city
@@ -47,15 +47,10 @@ JOIN film_actor ON actor.actor_id = film_actor.actor_id
 JOIN film ON film_actor.film_id = film.film_id;
 
 
-
-
-
 SELECT first_name, title
 FROM rental
 JOIN customer ON rental.customer_id = customer.customer_id
 JOIN inventory ON ;
-
-
 
 
 use sakila;

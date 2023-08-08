@@ -1,0 +1,29 @@
+-- Qual foi a maior temperatura registrada?
+SELECT MAX(temp_max) AS maior_temperatura FROM clima;
+
+-- Qual foi a menor temperatura registrada?
+SELECT MIN(temp_min) AS menor_temperatura FROM clima;
+
+-- Quais foram os dias que apresentaram a maior temperatura na cidade de Ilhéus?
+SELECT data, temp_max FROM clima WHERE cidade = 'Ilhéus' AND temp_max = (SELECT MAX(temp_max) FROM clima WHERE cidade = 'Ilhéus');
+
+-- Quais foram os dias que apresentaram a menor temperatura na cidade de Irecê?
+SELECT data, temp_min FROM clima WHERE cidade = 'Irecê' AND temp_min = (SELECT MIN(temp_min) FROM clima WHERE cidade = 'Irecê');
+
+-- Calcule a amplitude térmica:
+SELECT cidade, MAX(temp_max) - MIN(temp_min) AS amplitude_termica FROM clima GROUP BY cidade;
+
+-- Quais foram os dias mais quentes de março e que apresentam precipitação acima de 0.7?
+SELECT data, cidade, temp_max FROM clima WHERE EXTRACT(MONTH FROM data) = 3 AND precp > 0.7 ORDER BY temp_max DESC;
+
+-- Quais as cidades cujos nomes começam com as letras 'Ir'?
+SELECT cidade FROM clima WHERE cidade LIKE 'Ir%';
+
+-- Calcule o acumulado da precipitação de todas as cidades do mês de janeiro.
+SELECT cidade, SUM(precp) AS acumulado_precipitacao FROM clima WHERE EXTRACT(MONTH FROM data) = 1 GROUP BY cidade;
+
+-- Quais são as cidades cujo o valor de precipitação acumulado no mês de janeiro foi superior a 16?
+SELECT cidade FROM clima WHERE EXTRACT(MONTH FROM data) = 1 GROUP BY cidade HAVING SUM(precp) > 16;
+
+-- Quais são as cidades que começam com a letra 'I' cujo valor de precipitação acumulado do mês de junho foi maior do que 18?
+SELECT cidade FROM clima WHERE cidade LIKE 'I%' AND EXTRACT(MONTH FROM data) = 6 GROUP BY cidade HAVING SUM(precp) > 18;
